@@ -4,6 +4,7 @@
 ---------------------------------------------------------------------------------------------------- 
 	30/04/20	IT16109254	Created
 	30/04/20	IT16109254	Added References
+	01/05/20	IT16109254	Added Data table
  ---------------------------------------------------------------------------------------------------
  -->
 
@@ -25,9 +26,32 @@
 
 </head>
 <body>
+	<div class="jumbotron text-center">
+		<h1>Payments</h1>
+	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm"></div>
+			<div class="col-sm">
+				<button id="btnNew" type="button" class="btn btn-primary">New</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<table class="table" id="tblPayments">
+					<thead>
+						<tr>
+							<th>Payment Id</th>
+							<th>User Id</th>
+							<th>Appointment Id</th>
+							<th>Date</th>
+							<th>Type</th>
+							<th>Method</th>
+							<th>Status</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
 		</div>
 	</div>
 </body>
