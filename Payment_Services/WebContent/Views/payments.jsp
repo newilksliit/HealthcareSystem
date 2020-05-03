@@ -5,6 +5,7 @@
 	30/04/20	IT16109254	Created
 	30/04/20	IT16109254	Added References
 	01/05/20	IT16109254	Added Data table
+	03/05/20	IT16109254	Modified Data table
  ---------------------------------------------------------------------------------------------------
  -->
 
@@ -50,6 +51,7 @@
 							<th>Amount</th>
 						</tr>
 					</thead>
+					<tbody id="tblPaymentsBody"></tbody>
 				</table>
 			</div>
 		</div>
