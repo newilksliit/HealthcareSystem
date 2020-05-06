@@ -34,7 +34,20 @@
 		<h1>Payments</h1>
 	</div>
 	<div class="container" style="background-color: Chartreuse;">
-		<p>Database Connection:</p>
+		<p>Notifications:</p>
+		<!-- Alerts -->
+		<div class="alert alert-success alert-dismissible fade show">
+			<button type="button" class="close"
+				onclick="$('.alert-success').hide()">&times;</button>
+			<strong>Success!</strong>
+			<p></p>
+		</div>
+		<div class="alert alert-danger alert-dismissible fade show">
+			<button type="button" class="close"
+				onclick="$('.alert-danger').hide()">&times;</button>
+			<strong>Error!</strong>
+			<p></p>
+		</div>
 	</div>
 	<div class="container">
 		<div class="row">
@@ -86,8 +99,8 @@
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="paymentId">Payment ID:</label> <input type="text" readonly="readonly"
-								class="form-control" id="paymentId">
+							<label for="paymentId">Payment ID:</label> <input type="text"
+								readonly="readonly" class="form-control" id="paymentId">
 							<!--small id="emailHelp" class="form-text text-muted">description</small-->
 						</div>
 						<div class="form-group">
@@ -103,7 +116,7 @@
 
 						<div class="form-group">
 							<label for="date">Date</label> <input class="form-control"
-								type="date" value="" id="date">
+								type="text" value="" id="date" readonly="readonly">
 						</div>
 						<div class="form-group">
 							<label for="type">Type</label> <select
@@ -149,7 +162,6 @@
 			</div>
 		</div>
 	</div>
-
 
 </body>
 </html>

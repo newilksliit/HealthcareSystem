@@ -31,23 +31,23 @@ public class PaymentAPI {
 	}
 
 	@POST
-	@Consumes({ MediaType.APPLICATION_JSON })
-	@Produces({ MediaType.TEXT_PLAIN })
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
 	public Response postMessage(Payment p) {
-		return Response.ok().entity(PaymentController.insertItem(p)).build();
+		return PaymentController.insertItem(p);
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response putMessage(Payment p) {
-		return Response.ok().entity(PaymentController.updateItem(p)).build();
+		return PaymentController.updateItem(p);
 	}
 
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response deleteMessage(Payment p) {
-		return Response.ok().entity(PaymentController.deleteItem(p)).build();
+		return PaymentController.deleteItem(p);
 	}
 }

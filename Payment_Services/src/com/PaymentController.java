@@ -10,6 +10,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.core.Response;
+
 import com.Payment.Method;
 import com.Payment.Status;
 import com.Payment.Type;
@@ -73,12 +75,12 @@ public class PaymentController {
 		return output;
 	}
 
-	public static String insertItem(Payment p) {
-		String output = "";
+	public static Response insertItem(Payment p) {
+		Response response;
 		try {
 			Connection con = connect();
 			if (con == null) {
-				return "Error while connecting to the database for inserting.";
+				return Response.serverError().entity("Error while connecting to the database for inserting").build();
 			}
 			// create a prepared statement
 			String query = "INSERT INTO `tblpayment` (`user_id`, `appointment_id`, `type`, `method`, `status`, `amount` ) VALUES (?,?,?,?,?,?);";
@@ -95,20 +97,20 @@ public class PaymentController {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Inserted successfully";
+			response = Response.ok().entity("Payment inserted sucessfully").build();
 		} catch (Exception e) {
-			output = "Error while inserting the item.";
+			response = Response.serverError().entity(e).build();
 			System.err.println(e.getMessage());
 		}
-		return output;
+		return response;
 	}
 
-	public static String updateItem(Payment p) {
-		String output = "";
+	public static Response updateItem(Payment p) {
+		Response response;
 		try {
 			Connection con = connect();
 			if (con == null) {
-				return "Error while connecting to the database for updating.";
+				return Response.serverError().entity("Error while connecting to the database for updating").build();
 			}
 			// create a prepared statement
 			String query = "UPDATE `tblpayment` SET `user_id` = ?, `appointment_id` = ?, `type` = ?, `method` = ?, `status` = ?, `amount` = ? WHERE (`payment_id` = ?);";
@@ -126,33 +128,33 @@ public class PaymentController {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Updated successfully";
+			response = Response.ok().entity("Updated successfully").build();
 		} catch (Exception e) {
-			output = "Error while updating the item.";
+			response = Response.serverError().entity(e).build();
 			System.err.println(e.getMessage());
 		}
-		return output;
+		return response;
 	}
 
-	public static String deleteItem(Payment p) {
-		String output = "";
+	public static Response deleteItem(Payment p) {
+		Response output;
 		try {
 			Connection con = connect();
 			if (con == null) {
-				return "Error while connecting to the database for deleting.";
+				return Response.serverError().entity("Error while connecting to the database for deleting").build();
 			}
 			// create a prepared statement
 			String query = "delete from `tblpayment` where `payment_id` = ?";
-			
+
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
 			preparedStmt.setInt(1, p.paymentId);
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Deleted successfully";
+			output = Response.ok().entity("Deleted successfully").build();
 		} catch (Exception e) {
-			output = "Error while deleting the item.";
+			output = Response.serverError().entity(e).build();
 			System.err.println(e.getMessage());
 		}
 		return output;
